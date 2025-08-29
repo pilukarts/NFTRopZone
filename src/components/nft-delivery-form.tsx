@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   CheckCircle2,
   Image as ImageIcon,
@@ -13,6 +14,7 @@ import {
   Mail,
   User,
   KeyRound,
+  Wallet,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -75,7 +77,7 @@ const deliveryContract = `
 This NFT Delivery Contract ("Contract") is made and entered into as of the submission date by and between the purchaser ("Buyer") and the seller ("Seller").
 
 1.  **Subject Matter:** The Seller agrees to transfer, and the Buyer agrees to receive, the non-fungible token ("NFT") as selected in the form.
-2.  **Delivery:** The NFT will be delivered to the Buyer's specified wallet address within 24 hours of successful payment verification. The password provided will be required to access the NFT.
+2.  **Payment & Delivery:** Upon agreement to these terms, Buyer must complete payment to the designated wallet. The NFT will be delivered to the Buyer's specified wallet address within 24 hours of successful payment verification. The password provided will be required to access the NFT. If payment is not confirmed, this contract is void.
 3.  **No Refunds:** All sales are final. The Buyer acknowledges that they have reviewed the NFT and agrees to the terms of this sale. No refunds will be issued for any reason.
 4.  **Gas Fees:** The Buyer is responsible for all blockchain transaction fees (gas fees) associated with the transfer of the NFT.
 5.  **Ownership:** Upon successful transfer, the Buyer becomes the rightful owner of the NFT, along with all associated rights as defined by the NFT's underlying smart contract.
@@ -97,7 +99,10 @@ const formSchema = z.object({
 export function NftDeliveryForm() {
   const [isPending, startTransition] = useTransition();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isPaying, setIsPaying] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -111,7 +116,36 @@ export function NftDeliveryForm() {
 
   const termsAgreed = form.watch("termsAgreement");
 
+  async function handlePayment() {
+    setIsPaying(true);
+    // Simulate wallet connection and payment
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Simulate a 50/50 chance of payment success
+    const paymentSuccess = Math.random() > 0.5;
+
+    if (paymentSuccess) {
+      setIsPaid(true);
+      toast({
+        title: "Pago Exitoso",
+        description: "Tu pago ha sido confirmado. Ahora puedes asegurar tu NFT.",
+      });
+    } else {
+      router.push("/error?reason=payment_failed");
+    }
+    setIsPaying(false);
+  }
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!isPaid) {
+      toast({
+        variant: "destructive",
+        title: "Pago Requerido",
+        description: "Debes completar el pago antes de enviar el formulario.",
+      });
+      return;
+    }
+
     startTransition(async () => {
       const selectedNftObject = nfts.find((nft) => nft.id === values.selectedNft);
       
@@ -277,6 +311,7 @@ export function NftDeliveryForm() {
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
+                      disabled={isPaid}
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
@@ -289,10 +324,22 @@ export function NftDeliveryForm() {
               )}
             />
           </CardContent>
-          <CardFooter>
+          <CardFooter className="flex flex-col gap-4">
+            {termsAgreed && !isPaid && (
+               <Button
+                type="button"
+                onClick={handlePayment}
+                disabled={isPaying}
+                className="w-full bg-blue-600 text-white hover:bg-blue-700"
+              >
+                {isPaying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                <Wallet className="mr-2 h-4 w-4" />
+                {isPaying ? "Procesando pago..." : "Pagar con Wallet"}
+              </Button>
+            )}
             <Button
               type="submit"
-              disabled={isPending || !termsAgreed}
+              disabled={isPending || !isPaid}
               className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-transform hover:scale-105"
             >
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -304,5 +351,3 @@ export function NftDeliveryForm() {
     </Card>
   );
 }
-
-    
