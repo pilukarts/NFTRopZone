@@ -8,10 +8,10 @@ const nfts = [
   {
     id: 'nft-1',
     name: 'CryptoPunk #7804',
-    url: 'https://picsum.photos/400/400?random=1',
+    url: 'https://i.imgur.com/DXpmUKF.jpeg',
     price: '4200 ETH',
-    dataAiHint: 'pixel art',
-    description: 'Uno de los CryptoPunks más raros y codiciados, conocido por sus atributos únicos.'
+    dataAiHint: 'abstract art',
+    description: 'Una obra de arte abstracto que juega con la percepción y el color.'
   },
   {
     id: 'nft-2',

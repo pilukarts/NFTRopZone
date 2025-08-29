@@ -65,9 +65,9 @@ const nfts = [
   {
     id: "nft-1",
     name: "CryptoPunk #7804",
-    url: "https://picsum.photos/200/200?random=1",
+    url: "https://i.imgur.com/DXpmUKF.jpeg",
     price: "4200 ETH",
-    dataAiHint: "pixel art",
+    dataAiHint: "abstract art",
   },
   {
     id: "nft-2",
@@ -334,7 +334,7 @@ export function NftDeliveryForm() {
                               alt={nft.name}
                               width={40}
                               height={40}
-                              className="rounded-md"
+                              className="rounded-md object-cover"
                               data-ai-hint={nft.dataAiHint}
                             />
                             <div>
