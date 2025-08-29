@@ -15,6 +15,7 @@ import {
   User,
   KeyRound,
   Wallet,
+  FileText,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -196,11 +206,11 @@ export function NftDeliveryForm() {
   }
 
   return (
-    <Card className="w-full max-w-lg shadow-2xl">
+    <Card className="w-full max-w-lg shadow-2xl" id="delivery-form">
       <CardHeader>
-        <CardTitle className="text-3xl font-bold text-center">NFT Drop Zone</CardTitle>
+        <CardTitle className="text-3xl font-bold text-center">Completa la Entrega</CardTitle>
         <CardDescription className="text-center">
-        Completa el formulario para recibir tu NFT. El precio listado incluye las tarifas de acuñación.
+        Sigue los pasos a continuación para recibir tu NFT de forma segura.
         </CardDescription>
       </CardHeader>
       <Form {...form}>
@@ -296,12 +306,30 @@ export function NftDeliveryForm() {
                 </FormItem>
               )}
             />
-            <div className="space-y-2">
-              <h3 className="font-medium">Contrato de Entrega</h3>
-              <ScrollArea className="h-40 w-full rounded-md border p-4 text-sm">
-                {deliveryContract}
-              </ScrollArea>
-            </div>
+            
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="w-full">
+                  <FileText className="mr-2 h-4 w-4" />
+                  Ver Contrato de Entrega
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle>Contrato de Entrega de NFT</DialogTitle>
+                  <DialogDescription>
+                  Lee detenidamente los términos antes de continuar.
+                  </DialogDescription>
+                </DialogHeader>
+                <ScrollArea className="h-96 w-full rounded-md border p-4 text-sm whitespace-pre-wrap">
+                  {deliveryContract}
+                </ScrollArea>
+                 <DialogClose asChild>
+                    <Button type="button">Cerrar</Button>
+                  </DialogClose>
+              </DialogContent>
+            </Dialog>
+
             <FormField
               control={form.control}
               name="termsAgreement"
