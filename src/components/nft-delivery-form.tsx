@@ -16,6 +16,7 @@ import {
   KeyRound,
   Wallet,
   FileText,
+  Languages,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -57,6 +58,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/hooks/use-toast";
 import { verifyFormData } from "@/ai/flows/verify-form-data";
+import { translateText } from "@/ai/flows/translate-text";
 import { submitForm } from "@/lib/actions";
 
 const nfts = [
@@ -96,6 +98,15 @@ This NFT Delivery Contract ("Contract") is made and entered into as of the submi
 8.  **Agreement:** By checking the "I agree" box, the Buyer acknowledges that they have read, understood, and agreed to all the terms and conditions outlined in this Contract.
 `;
 
+const languages = [
+    { value: "es", label: "Español" },
+    { value: "en", label: "English" },
+    { value: "fr", label: "Français" },
+    { value: "de", label: "Deutsch" },
+    { value: "zh", label: "中文" },
+    { value: "ja", label: "日本語" },
+];
+
 const formSchema = z.object({
   buyerName: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
   buyerEmail: z.string().email({ message: "Por favor, introduce una dirección de correo electrónico válida." }),
@@ -104,6 +115,7 @@ const formSchema = z.object({
   termsAgreement: z.literal(true, {
     errorMap: () => ({ message: "Debes aceptar los términos y condiciones." }),
   }),
+  language: z.string().optional(),
 });
 
 export function NftDeliveryForm() {
@@ -111,6 +123,8 @@ export function NftDeliveryForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isPaying, setIsPaying] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false);
+  const [translatedContract, setTranslatedContract] = useState("");
   const { toast } = useToast();
   const router = useRouter();
 
@@ -121,10 +135,12 @@ export function NftDeliveryForm() {
       buyerEmail: "",
       password: "",
       termsAgreement: false,
+      language: "es",
     },
   });
 
   const termsAgreed = form.watch("termsAgreement");
+  const selectedLanguage = form.watch("language");
 
   async function handlePayment() {
     setIsPaying(true);
@@ -144,6 +160,25 @@ export function NftDeliveryForm() {
       router.push("/error?reason=payment_failed");
     }
     setIsPaying(false);
+  }
+
+  async function handleTranslateContract() {
+    if (!selectedLanguage || selectedLanguage === 'es') {
+      setTranslatedContract(deliveryContract);
+      return;
+    }
+
+    setIsTranslating(true);
+    try {
+      const languageLabel = languages.find(l => l.value === selectedLanguage)?.label || 'English';
+      const result = await translateText({ text: deliveryContract, targetLanguage: languageLabel });
+      setTranslatedContract(result.translatedText);
+    } catch (error) {
+      console.error("Translation error:", error);
+      setTranslatedContract("Sorry, translation failed. Please try again.");
+    } finally {
+      setIsTranslating(false);
+    }
   }
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -216,6 +251,33 @@ export function NftDeliveryForm() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent className="space-y-6">
+             <FormField
+              control={form.control}
+              name="language"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Idioma</FormLabel>
+                   <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <div className="relative">
+                         <Languages className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <SelectTrigger className="pl-10">
+                          <SelectValue placeholder="Selecciona un idioma" />
+                        </SelectTrigger>
+                      </div>
+                    </FormControl>
+                    <SelectContent>
+                      {languages.map((lang) => (
+                        <SelectItem key={lang.value} value={lang.value}>
+                          {lang.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="buyerName"
@@ -307,7 +369,7 @@ export function NftDeliveryForm() {
               )}
             />
             
-            <Dialog>
+            <Dialog onOpenChange={(open) => open && handleTranslateContract()}>
               <DialogTrigger asChild>
                 <Button variant="outline" className="w-full">
                   <FileText className="mr-2 h-4 w-4" />
@@ -322,7 +384,13 @@ export function NftDeliveryForm() {
                   </DialogDescription>
                 </DialogHeader>
                 <ScrollArea className="h-96 w-full rounded-md border p-4 text-sm whitespace-pre-wrap">
-                  {deliveryContract}
+                  {isTranslating ? (
+                    <div className="flex items-center justify-center h-full">
+                      <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                    </div>
+                  ) : (
+                    translatedContract || deliveryContract
+                  )}
                 </ScrollArea>
                  <DialogClose asChild>
                     <Button type="button">Cerrar</Button>
