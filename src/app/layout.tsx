@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'NFT Drop Zone',
@@ -19,8 +20,20 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased bg-background h-full">
-        {children}
+      <body className="font-body antialiased bg-background h-full flex flex-col">
+        <div className="flex-grow">
+          {children}
+        </div>
+        <footer className="bg-muted text-muted-foreground py-6 mt-auto">
+          <div className="container mx-auto text-center">
+            <div className="flex justify-center space-x-6 mb-4">
+              <Link href="/contact" className="text-sm hover:underline">Contacto</Link>
+              <Link href="/terms" className="text-sm hover:underline">Términos de Servicio</Link>
+              <Link href="/rules" className="text-sm hover:underline">Reglas</Link>
+            </div>
+            <p className="text-xs">&copy; {new Date().getFullYear()} NFT Drop Zone. Todos los derechos reservados.</p>
+          </div>
+        </footer>
         <Toaster />
       </body>
     </html>
