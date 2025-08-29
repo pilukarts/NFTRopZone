@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useTransition } from "react";
@@ -11,6 +12,7 @@ import {
   Loader2,
   Mail,
   User,
+  KeyRound,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -73,7 +75,7 @@ const deliveryContract = `
 This NFT Delivery Contract ("Contract") is made and entered into as of the submission date by and between the purchaser ("Buyer") and the seller ("Seller").
 
 1.  **Subject Matter:** The Seller agrees to transfer, and the Buyer agrees to receive, the non-fungible token ("NFT") as selected in the form.
-2.  **Delivery:** The NFT will be delivered to the Buyer's specified wallet address within 24 hours of successful payment verification.
+2.  **Delivery:** The NFT will be delivered to the Buyer's specified wallet address within 24 hours of successful payment verification. The password provided will be required to access the NFT.
 3.  **No Refunds:** All sales are final. The Buyer acknowledges that they have reviewed the NFT and agrees to the terms of this sale. No refunds will be issued for any reason.
 4.  **Gas Fees:** The Buyer is responsible for all blockchain transaction fees (gas fees) associated with the transfer of the NFT.
 5.  **Ownership:** Upon successful transfer, the Buyer becomes the rightful owner of the NFT, along with all associated rights as defined by the NFT's underlying smart contract.
@@ -83,11 +85,12 @@ This NFT Delivery Contract ("Contract") is made and entered into as of the submi
 `;
 
 const formSchema = z.object({
-  buyerName: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  buyerEmail: z.string().email({ message: "Please enter a valid email address." }),
-  selectedNft: z.string({ required_error: "Please select an NFT to purchase." }),
+  buyerName: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
+  buyerEmail: z.string().email({ message: "Por favor, introduce una dirección de correo electrónico válida." }),
+  selectedNft: z.string({ required_error: "Por favor, selecciona un NFT para comprar." }),
+  password: z.string().min(8, { message: "La contraseña debe tener al menos 8 caracteres." }),
   termsAgreement: z.literal(true, {
-    errorMap: () => ({ message: "You must accept the terms and conditions." }),
+    errorMap: () => ({ message: "Debes aceptar los términos y condiciones." }),
   }),
 });
 
@@ -101,6 +104,7 @@ export function NftDeliveryForm() {
     defaultValues: {
       buyerName: "",
       buyerEmail: "",
+      password: "",
       termsAgreement: false,
     },
   });
@@ -121,8 +125,8 @@ export function NftDeliveryForm() {
       if (!aiVerificationResult.isComplete) {
         toast({
           variant: "destructive",
-          title: "Incomplete Form",
-          description: `Please fill out the following required fields: ${aiVerificationResult.missingFields.join(", ")}`,
+          title: "Formulario Incompleto",
+          description: `Por favor, completa los siguientes campos obligatorios: ${aiVerificationResult.missingFields.join(", ")}`,
         });
         return;
       }
@@ -133,8 +137,8 @@ export function NftDeliveryForm() {
       } else {
         toast({
           variant: "destructive",
-          title: "Submission Failed",
-          description: result.error || "An unknown error occurred. Please try again.",
+          title: "Envío Fallido",
+          description: result.error || "Ocurrió un error desconocido. Por favor, inténtalo de nuevo.",
         });
       }
     });
@@ -146,12 +150,12 @@ export function NftDeliveryForm() {
         <CardContent className="p-10 text-center flex flex-col items-center gap-6">
           <CheckCircle2 className="w-20 h-20 text-green-500" />
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold">Thank You!</h2>
+            <h2 className="text-3xl font-bold">¡Gracias!</h2>
             <p className="text-muted-foreground">
-              Your NFT delivery request has been submitted. You will receive an email confirmation shortly.
+              Tu solicitud de entrega de NFT ha sido enviada. Recibirás una confirmación por correo electrónico en breve.
             </p>
           </div>
-          <Button onClick={() => window.location.reload()}>Submit Another Form</Button>
+          <Button onClick={() => window.location.reload()}>Enviar otro formulario</Button>
         </CardContent>
       </Card>
     );
@@ -162,7 +166,7 @@ export function NftDeliveryForm() {
       <CardHeader>
         <CardTitle className="text-3xl font-bold text-center">NFT Drop Zone</CardTitle>
         <CardDescription className="text-center">
-          Complete the form below to receive your purchased NFT.
+          Completa el formulario para recibir tu NFT. Nota: Se aplica una tarifa de acuñación del 65-70% para publicar en la web.
         </CardDescription>
       </CardHeader>
       <Form {...form}>
@@ -173,7 +177,7 @@ export function NftDeliveryForm() {
               name="buyerName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Full Name</FormLabel>
+                  <FormLabel>Nombre completo</FormLabel>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <FormControl>
@@ -189,11 +193,11 @@ export function NftDeliveryForm() {
               name="buyerEmail"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email Address</FormLabel>
+                  <FormLabel>Dirección de correo electrónico</FormLabel>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <FormControl>
-                      <Input placeholder="you@example.com" {...field} className="pl-10" />
+                      <Input placeholder="tu@ejemplo.com" {...field} className="pl-10" />
                     </FormControl>
                   </div>
                   <FormMessage />
@@ -205,13 +209,13 @@ export function NftDeliveryForm() {
               name="selectedNft"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Select NFT</FormLabel>
+                  <FormLabel>Seleccionar NFT</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <div className="relative">
                         <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <SelectTrigger className="pl-10">
-                          <SelectValue placeholder="Choose your purchased NFT" />
+                          <SelectValue placeholder="Elige tu NFT comprado" />
                         </SelectTrigger>
                       </div>
                     </FormControl>
@@ -230,7 +234,7 @@ export function NftDeliveryForm() {
                             <div>
                               <p className="font-semibold">{nft.name}</p>
                               <p className="text-sm text-muted-foreground">
-                                Price: {nft.price}
+                                Precio: {nft.price}
                               </p>
                             </div>
                           </div>
@@ -242,8 +246,24 @@ export function NftDeliveryForm() {
                 </FormItem>
               )}
             />
+             <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Contraseña de descarga</FormLabel>
+                  <div className="relative">
+                    <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <FormControl>
+                      <Input type="password" placeholder="Crea una contraseña segura" {...field} className="pl-10" />
+                    </FormControl>
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <div className="space-y-2">
-              <h3 className="font-medium">Delivery Contract</h3>
+              <h3 className="font-medium">Contrato de Entrega</h3>
               <ScrollArea className="h-40 w-full rounded-md border p-4 text-sm">
                 {deliveryContract}
               </ScrollArea>
@@ -261,7 +281,7 @@ export function NftDeliveryForm() {
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel>
-                      I have read and agree to the delivery contract terms.
+                      He leído y acepto los términos del contrato de entrega.
                     </FormLabel>
                     <FormMessage />
                   </div>
@@ -276,7 +296,7 @@ export function NftDeliveryForm() {
               className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-transform hover:scale-105"
             >
               {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {isPending ? "Submitting..." : "Secure My NFT"}
+              {isPending ? "Enviando..." : "Asegurar mi NFT"}
             </Button>
           </CardFooter>
         </form>
@@ -284,3 +304,5 @@ export function NftDeliveryForm() {
     </Card>
   );
 }
+
+    

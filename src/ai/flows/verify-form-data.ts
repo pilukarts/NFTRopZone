@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -17,6 +18,7 @@ const VerifyFormDataInputSchema = z.object({
   selectedNft: z
     .string()
     .describe('The selected NFT (name, url, and price).'),
+  password: z.string().describe('The password for NFT download.'),
   termsAgreement: z
     .boolean()
     .describe('Whether the buyer agrees to the delivery contract.'),
@@ -46,6 +48,7 @@ Determine if the following form data is complete.
 Buyer Name: {{{buyerName}}}
 Buyer Email: {{{buyerEmail}}}
 Selected NFT: {{{selectedNft}}}
+Password: {{{password}}}
 Terms Agreement: {{{termsAgreement}}}
 
 If any fields are missing, identify them.
@@ -64,3 +67,5 @@ const verifyFormDataFlow = ai.defineFlow(
     return output!;
   }
 );
+
+    
