@@ -200,7 +200,7 @@ export function NftDeliveryForm() {
       <CardHeader>
         <CardTitle className="text-3xl font-bold text-center">NFT Drop Zone</CardTitle>
         <CardDescription className="text-center">
-          Completa el formulario para recibir tu NFT. Nota: Se aplica una tarifa de acuñación del 65-70% para publicar en la web.
+        Completa el formulario para recibir tu NFT. El precio listado incluye las tarifas de acuñación.
         </CardDescription>
       </CardHeader>
       <Form {...form}>
