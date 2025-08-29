@@ -64,24 +64,31 @@ import { submitForm } from "@/lib/actions";
 const nfts = [
   {
     id: "nft-1",
-    name: "CryptoPunk #7804",
-    url: "https://i.imgur.com/DXpmUKF.jpeg",
-    price: "4200 ETH",
-    dataAiHint: "abstract art",
+    name: "Galactic Explorer",
+    url: "https://i.imgur.com/uGSNZ9e.jpeg",
+    price: "2.5 ETH",
+    dataAiHint: "astronaut space",
   },
   {
     id: "nft-2",
-    name: "Beeple, The First 5000 Days",
-    url: "https://picsum.photos/200/200?random=2",
-    price: "$69.3M",
-    dataAiHint: "digital collage",
+    name: "Cyber-Samurai",
+    url: "https://i.imgur.com/QAv28u4.jpeg",
+    price: "3.1 ETH",
+    dataAiHint: "samurai futuristic",
   },
   {
     id: "nft-3",
-    name: "Bored Ape Yacht Club #8817",
-    url: "https://picsum.photos/200/200?random=3",
-    price: "$3.4M",
-    dataAiHint: "cartoon ape",
+    name: "Neon Overdrive",
+    url: "https://i.imgur.com/QKCX7qx.jpeg",
+    price: "1.8 ETH",
+    dataAiHint: "car night",
+  },
+  {
+    id: 'nft-4',
+    name: 'Mystic Feline',
+    url: 'https://i.imgur.com/YoiO7mR.jpeg',
+    price: '4.2 ETH',
+    dataAiHint: 'cat magic',
   },
 ];
 
