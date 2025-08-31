@@ -58,7 +58,7 @@ export default function RootLayout({
               <Link href="/terms" className="text-sm hover:underline">Terms of Service</Link>
               <Link href="/rules" className="text-sm hover:underline">Rules</Link>
             </div>
-            <p className="text-xs">&copy; {new Date().getFullYear()} NFT Drop Zone. All rights reserved.</p>
+            <p className="text-xs">&copy; {new Date().getFullYear()} Pilukarts. All rights reserved.</p>
           </div>
         </footer>
         <Toaster />
