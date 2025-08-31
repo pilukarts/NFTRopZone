@@ -40,7 +40,7 @@ const nfts = [
   {
     id: 'nft-7',
     name: 'pixel art mix',
-    url: 'https://i.imgur.com/reJ56tI.jpeg',
+    url: 'https://i.imgur.com/uGSNZ9e.png',
     dataAiHint: 'pixel art',
     description: 'A unique mix of pixel art styles.',
     marketplaceUrl: 'https://opensea.io/item/base/0xf631181cbb46c5571bf02ac82a3418a9ef20457c/1'
