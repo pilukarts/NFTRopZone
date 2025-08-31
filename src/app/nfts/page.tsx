@@ -29,6 +29,14 @@ const nfts = [
     description: 'An enigmatic being that guards the secrets of a forgotten world.',
     marketplaceUrl: 'https://foundation.app/@pilukarts?username=pilukarts'
   },
+  {
+    id: 'nft-6',
+    name: 'Smile',
+    url: 'https://i.imgur.com/2GeLwJA.jpeg',
+    dataAiHint: 'smile illustration',
+    description: 'A captivating smile that brightens the digital canvas.',
+    marketplaceUrl: 'https://opensea.io/pilukartsWorld'
+  }
 ];
 
 export default function NftsPage() {
