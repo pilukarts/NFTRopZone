@@ -7,10 +7,10 @@ import { ProtectedImage } from '@/components/protected-image';
 const nfts = [
   {
     id: 'nft-3',
-    name: 'Cyber-Samurai',
+    name: 'SIlver Mini Lady',
     url: 'https://i.imgur.com/QAv28u4.jpeg',
-    dataAiHint: 'samurai futuristic',
-    description: 'The fusion of ancient tradition and futuristic technology in a single warrior.',
+    dataAiHint: 'silver lady',
+    description: 'A mysterious and elegant figure cast in shimmering silver.',
     marketplaceUrl: 'https://opensea.io/pilukartsWorld'
   },
   {
