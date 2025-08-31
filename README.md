@@ -1,5 +1,2 @@
-# Firebase Studio
-
-This is a NextJS starter in Firebase Studio.
-
-To get started, take a look at src/app/page.tsx.
+# NFTRopZone
+Explore the exclusive NFT gallery of Pilukarts. A secure platform to discover and claim unique digital art
