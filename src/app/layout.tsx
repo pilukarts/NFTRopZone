@@ -1,3 +1,4 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const socialLinks = [
-    { name: 'Opensea (pilukartsWorls)', href: 'https://opensea.io/pilukartsWorls' },
+    { name: 'Opensea (pilukartsWorld)', href: 'https://opensea.io/pilukartsWorld' },
     { name: 'Opensea (pilukartsinlondon)', href: 'https://opensea.io/pilukartsinlondon' },
     { name: 'Foundation', href: 'https://foundation.app/@pilukarts?username=pilukarts' },
     { name: 'X', href: 'https://x.com/pilukarts' },

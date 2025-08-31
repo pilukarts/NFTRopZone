@@ -19,7 +19,7 @@ export default function Home() {
         <p className="text-muted-foreground">Explore my collections on the official marketplaces:</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg">
-                <Link href="https://opensea.io/pilukartsWorls" target="_blank" rel="noopener noreferrer">View on OpenSea (Main)</Link>
+                <Link href="https://opensea.io/pilukartsWorld" target="_blank" rel="noopener noreferrer">View on OpenSea (Main)</Link>
             </Button>
              <Button asChild size="lg" variant="secondary">
                 <Link href="https://opensea.io/pilukartsinlondon" target="_blank" rel="noopener noreferrer">View on OpenSea (London)</Link>

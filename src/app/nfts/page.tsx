@@ -11,7 +11,7 @@ const nfts = [
     url: 'https://i.imgur.com/uGSNZ9e.jpeg',
     dataAiHint: 'astronaut space',
     description: 'A brave explorer floating in the vastness of the cosmos.',
-    marketplaceUrl: 'https://opensea.io/pilukartsWorls'
+    marketplaceUrl: 'https://opensea.io/pilukartsWorld'
   },
   {
     id: 'nft-2',
@@ -19,7 +19,7 @@ const nfts = [
     url: 'https://i.imgur.com/QAv28u4.jpeg',
     dataAiHint: 'samurai futuristic',
     description: 'The fusion of ancient tradition and futuristic technology in a single warrior.',
-    marketplaceUrl: 'https://opensea.io/pilukartsWorls'
+    marketplaceUrl: 'https://opensea.io/pilukartsWorld'
   },
   {
     id: 'nft-3',
