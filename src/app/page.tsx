@@ -1,5 +1,4 @@
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { NftDeliveryForm } from '@/components/nft-delivery-form';
@@ -12,13 +11,13 @@ import {
 } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { ProtectedImage } from '@/components/protected-image';
 
 const nfts = [
     {
     id: 'nft-1',
     name: 'Galactic Explorer',
     url: 'https://i.imgur.com/uGSNZ9e.jpeg',
-    price: '2.5 ETH',
     dataAiHint: 'astronaut space',
     description:
       'A brave explorer floating in the vastness of the cosmos.',
@@ -27,7 +26,6 @@ const nfts = [
     id: 'nft-2',
     name: 'Cyber-Samurai',
     url: 'https://i.imgur.com/QAv28u4.jpeg',
-    price: '3.1 ETH',
     dataAiHint: 'samurai futuristic',
     description:
       'The fusion of ancient tradition and futuristic technology in a single warrior.',
@@ -36,7 +34,6 @@ const nfts = [
     id: 'nft-3',
     name: 'Neon Overdrive',
     url: 'https://i.imgur.com/QKCX7qx.jpeg',
-    price: '1.8 ETH',
     dataAiHint: 'car night',
     description:
       'Feel the speed and adrenaline in a city bathed in neon lights.',
@@ -45,7 +42,6 @@ const nfts = [
     id: 'nft-4',
     name: 'Mystic Feline',
     url: 'https://i.imgur.com/YoiO7mR.jpeg',
-    price: '4.2 ETH',
     dataAiHint: 'cat magic',
     description:
       'An enigmatic being that guards the secrets of a forgotten world.',
@@ -76,7 +72,7 @@ export default function Home() {
               <div className="p-1">
                 <Card>
                   <CardContent className="relative aspect-[3/2] flex items-center justify-center p-0">
-                    <Image
+                    <ProtectedImage
                       src={nft.url}
                       alt={nft.name}
                       fill

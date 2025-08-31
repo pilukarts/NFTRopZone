@@ -66,28 +66,24 @@ const nfts = [
     id: "nft-1",
     name: "Galactic Explorer",
     url: "https://i.imgur.com/uGSNZ9e.jpeg",
-    price: "2.5 ETH",
     dataAiHint: "astronaut space",
   },
   {
     id: "nft-2",
     name: "Cyber-Samurai",
     url: "https://i.imgur.com/QAv28u4.jpeg",
-    price: "3.1 ETH",
     dataAiHint: "samurai futuristic",
   },
   {
     id: "nft-3",
     name: "Neon Overdrive",
     url: "https://i.imgur.com/QKCX7qx.jpeg",
-    price: "1.8 ETH",
     dataAiHint: "car night",
   },
   {
     id: 'nft-4',
     name: 'Mystic Feline',
     url: 'https://i.imgur.com/YoiO7mR.jpeg',
-    price: '4.2 ETH',
     dataAiHint: 'cat magic',
   },
 ];
@@ -101,7 +97,7 @@ This NFT Delivery Contract ("Contract") is made and entered into as of the submi
 4.  **Gas Fees:** The Buyer is responsible for all blockchain transaction fees (gas fees) associated with the transfer of the NFT.
 5.  **Ownership:** Upon successful transfer, the Buyer becomes the rightful owner of the NFT, along with all associated rights as defined by the NFT's underlying smart contract.
 6.  **Representations:** The Buyer represents that they are not a person or entity barred from using the Ethereum network or receiving NFTs under the laws of any applicable jurisdiction.
-7.  **Limitation of Liability:** The Seller shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to, loss of profits, data, use, goodwill, or other intangible losses.
+7.  **Limitation of Liability:** The Seller shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not to, loss of profits, data, use, goodwill, or other intangible losses.
 8.  **Agreement:** By checking the "I agree" box, the Buyer acknowledges that they have read, understood, and agreed to all the terms and conditions outlined in this Contract.
 `;
 
@@ -346,9 +342,6 @@ export function NftDeliveryForm() {
                             />
                             <div>
                               <p className="font-semibold">{nft.name}</p>
-                              <p className="text-sm text-muted-foreground">
-                                Price: {nft.price}
-                              </p>
                             </div>
                           </div>
                         </SelectItem>
