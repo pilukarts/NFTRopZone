@@ -46,7 +46,7 @@ const featuredNfts = [
 export default function Home() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
-  )
+  );
   
   return (
     <main className="flex min-h-full flex-col items-center justify-center p-4 sm:p-6 lg:p-8 space-y-8">
@@ -63,8 +63,8 @@ export default function Home() {
         className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg" 
         opts={{ loop: true }}
         plugins={[plugin.current]}
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
+        onMouseEnter={() => plugin.current.stop()}
+        onMouseLeave={() => plugin.current.reset()}
       >
         <CarouselContent>
           {featuredNfts.map((nft) => (
