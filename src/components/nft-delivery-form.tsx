@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   CheckCircle2,
@@ -423,20 +424,24 @@ export function NftDeliveryForm() {
           <CardFooter className="flex flex-col gap-4">
              {termsAgreed && !isPaid && (
               <div className="w-full text-center space-y-2">
-                <div className="text-sm text-muted-foreground">
-                  <p>For alternative payment, send to PayPal:</p>
-                  <p className="font-semibold">piluka1977@gmail.com</p>
+                <p className="text-sm text-muted-foreground">Select a payment method:</p>
+                <div className="flex flex-col sm:flex-row gap-2">
+                    <Button
+                        type="button"
+                        onClick={handlePayment}
+                        disabled={isPaying}
+                        className="w-full bg-blue-600 text-white hover:bg-blue-700"
+                    >
+                        {isPaying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                        <Wallet className="mr-2 h-4 w-4" />
+                        {isPaying ? "Processing..." : "Pay with Wallet"}
+                    </Button>
+                    <Button asChild className="w-full bg-[#0070ba] text-white hover:bg-[#005ea6]">
+                        <Link href="https://paypal.me/pilukartsNFT" target="_blank">
+                            Pay with PayPal
+                        </Link>
+                    </Button>
                 </div>
-                 <Button
-                  type="button"
-                  onClick={handlePayment}
-                  disabled={isPaying}
-                  className="w-full bg-blue-600 text-white hover:bg-blue-700"
-                >
-                  {isPaying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  <Wallet className="mr-2 h-4 w-4" />
-                  {isPaying ? "Processing Payment..." : "Pay with Wallet"}
-                </Button>
               </div>
             )}
             <Button
@@ -453,3 +458,5 @@ export function NftDeliveryForm() {
     </Card>
   );
 }
+
+    
