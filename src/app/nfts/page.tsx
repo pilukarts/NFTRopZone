@@ -15,10 +15,10 @@ const nfts = [
   },
   {
     id: 'nft-4',
-    name: 'Neon Overdrive',
+    name: 'Mine +Lady',
     url: 'https://i.imgur.com/QKCX7qx.jpeg',
-    dataAiHint: 'car night',
-    description: 'Feel the speed and adrenaline in a city bathed in neon lights.',
+    dataAiHint: 'lady mining',
+    description: 'A powerful lady in her element, a treasured discovery.',
      marketplaceUrl: 'https://foundation.app/@pilukarts?username=pilukarts'
   },
   {
