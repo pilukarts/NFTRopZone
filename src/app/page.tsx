@@ -1,10 +1,14 @@
 
+"use client";
+
 import Link from 'next/link';
 import { NftDeliveryForm } from '@/components/nft-delivery-form';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
+import Autoplay from "embla-carousel-autoplay"
+import React from 'react';
 
 const featuredNfts = [
   {
@@ -12,6 +16,12 @@ const featuredNfts = [
     name: 'Newest Creation',
     url: 'https://i.imgur.com/Szb2zpE.png',
     dataAiHint: 'abstract art'
+  },
+  {
+    id: 'nft-7',
+    name: 'pixel art mix',
+    url: 'https://i.imgur.com/uGSNZ9e.png',
+    dataAiHint: 'pixel art',
   },
   {
     id: 'nft-3',
@@ -34,6 +44,10 @@ const featuredNfts = [
 ];
 
 export default function Home() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  )
+  
   return (
     <main className="flex min-h-full flex-col items-center justify-center p-4 sm:p-6 lg:p-8 space-y-8">
       <div className="w-full max-w-4xl text-center space-y-2">
@@ -45,7 +59,13 @@ export default function Home() {
         </p>
       </div>
 
-      <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg" opts={{ loop: true }}>
+      <Carousel 
+        className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg" 
+        opts={{ loop: true }}
+        plugins={[plugin.current]}
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+      >
         <CarouselContent>
           {featuredNfts.map((nft) => (
             <CarouselItem key={nft.id}>
