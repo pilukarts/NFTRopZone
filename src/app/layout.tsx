@@ -27,11 +27,11 @@ export default function RootLayout({
         <footer className="bg-muted text-muted-foreground py-6 mt-auto">
           <div className="container mx-auto text-center">
             <div className="flex justify-center space-x-6 mb-4">
-              <Link href="/contact" className="text-sm hover:underline">Contacto</Link>
-              <Link href="/terms" className="text-sm hover:underline">Términos de Servicio</Link>
-              <Link href="/rules" className="text-sm hover:underline">Reglas</Link>
+              <Link href="/contact" className="text-sm hover:underline">Contact</Link>
+              <Link href="/terms" className="text-sm hover:underline">Terms of Service</Link>
+              <Link href="/rules" className="text-sm hover:underline">Rules</Link>
             </div>
-            <p className="text-xs">&copy; {new Date().getFullYear()} NFT Drop Zone. Todos los derechos reservados.</p>
+            <p className="text-xs">&copy; {new Date().getFullYear()} NFT Drop Zone. All rights reserved.</p>
           </div>
         </footer>
         <Toaster />

@@ -21,7 +21,7 @@ const nfts = [
     price: '2.5 ETH',
     dataAiHint: 'astronaut space',
     description:
-      'Un explorador valiente flotando en la inmensidad del cosmos.',
+      'A brave explorer floating in the vastness of the cosmos.',
   },
   {
     id: 'nft-2',
@@ -30,7 +30,7 @@ const nfts = [
     price: '3.1 ETH',
     dataAiHint: 'samurai futuristic',
     description:
-      'La fusión de la tradición ancestral y la tecnología futurista en un solo guerrero.',
+      'The fusion of ancient tradition and futuristic technology in a single warrior.',
   },
   {
     id: 'nft-3',
@@ -39,7 +39,7 @@ const nfts = [
     price: '1.8 ETH',
     dataAiHint: 'car night',
     description:
-      'Siente la velocidad y la adrenalina en una ciudad bañada por luces de neón.',
+      'Feel the speed and adrenaline in a city bathed in neon lights.',
   },
   {
     id: 'nft-4',
@@ -48,7 +48,7 @@ const nfts = [
     price: '4.2 ETH',
     dataAiHint: 'cat magic',
     description:
-      'Un ser enigmático que custodia los secretos de un mundo olvidado.',
+      'An enigmatic being that guards the secrets of a forgotten world.',
   },
 ];
 
@@ -57,10 +57,10 @@ export default function Home() {
     <main className="flex min-h-full flex-col items-center justify-center p-4 sm:p-6 lg:p-8 space-y-8">
       <div className="w-full max-w-4xl text-center space-y-2">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-          Bienvenido a NFT Drop Zone
+          Welcome to NFT Drop Zone
         </h1>
         <p className="text-lg text-muted-foreground">
-          Tu lugar para asegurar y recibir NFTs exclusivos de forma segura.
+          Your place to securely claim and receive exclusive NFTs.
         </p>
       </div>
 
@@ -99,7 +99,7 @@ export default function Home() {
 
       <div className="flex justify-center">
         <Button asChild size="lg">
-          <Link href="/nfts">Ver Galería Completa</Link>
+          <Link href="/nfts">View Full Gallery</Link>
         </Button>
       </div>
 

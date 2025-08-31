@@ -11,7 +11,7 @@ const nfts = [
     url: 'https://i.imgur.com/uGSNZ9e.jpeg',
     price: '2.5 ETH',
     dataAiHint: 'astronaut space',
-    description: 'Un explorador valiente flotando en la inmensidad del cosmos.'
+    description: 'A brave explorer floating in the vastness of the cosmos.'
   },
   {
     id: 'nft-2',
@@ -19,7 +19,7 @@ const nfts = [
     url: 'https://i.imgur.com/QAv28u4.jpeg',
     price: '3.1 ETH',
     dataAiHint: 'samurai futuristic',
-    description: 'La fusión de la tradición ancestral y la tecnología futurista en un solo guerrero.'
+    description: 'The fusion of ancient tradition and futuristic technology in a single warrior.'
   },
   {
     id: 'nft-3',
@@ -27,7 +27,7 @@ const nfts = [
     url: 'https://i.imgur.com/QKCX7qx.jpeg',
     price: '1.8 ETH',
     dataAiHint: 'car night',
-    description: 'Siente la velocidad y la adrenalina en una ciudad bañada por luces de neón.'
+    description: 'Feel the speed and adrenaline in a city bathed in neon lights.'
   },
   {
     id: 'nft-4',
@@ -35,7 +35,7 @@ const nfts = [
     url: 'https://i.imgur.com/YoiO7mR.jpeg',
     price: '4.2 ETH',
     dataAiHint: 'cat magic',
-    description: 'Un ser enigmático que custodia los secretos de un mundo olvidado.'
+    description: 'An enigmatic being that guards the secrets of a forgotten world.'
   },
 ];
 
@@ -43,15 +43,15 @@ export default function NftsPage() {
   return (
     <main className="container mx-auto p-4 sm:p-6 lg:p-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold">Galería de NFTs</h1>
-        <p className="text-muted-foreground">Explora nuestra colección de NFTs exclusivos.</p>
+        <h1 className="text-4xl font-bold">NFT Gallery</h1>
+        <p className="text-muted-foreground">Explore our collection of exclusive NFTs.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {nfts.map((nft) => (
           <Card key={nft.id} className="flex flex-col">
             <CardHeader>
               <CardTitle>{nft.name}</CardTitle>
-              <CardDescription>Precio: {nft.price}</CardDescription>
+              <CardDescription>Price: {nft.price}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
               <div className="aspect-square relative w-full">
@@ -67,7 +67,7 @@ export default function NftsPage() {
             </CardContent>
             <CardFooter>
               <Button asChild className="w-full">
-                <Link href="/">Ir a Comprar</Link>
+                <Link href="/">Go to Purchase</Link>
               </Button>
             </CardFooter>
           </Card>
@@ -75,7 +75,7 @@ export default function NftsPage() {
       </div>
         <div className="text-center mt-8">
             <Button asChild variant="outline">
-                <Link href="/">Volver al Inicio</Link>
+                <Link href="/">Back to Home</Link>
             </Button>
         </div>
     </main>

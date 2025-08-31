@@ -11,43 +11,43 @@ export default function RulesPage() {
       <div className="max-w-4xl mx-auto">
         <Card>
           <CardHeader className="text-center">
-            <CardTitle className="text-4xl font-bold">Reglas de la Comunidad</CardTitle>
-            <p className="text-muted-foreground pt-2">Para mantener una comunidad segura y respetuosa, por favor sigue estas reglas.</p>
+            <CardTitle className="text-4xl font-bold">Community Rules</CardTitle>
+            <p className="text-muted-foreground pt-2">To maintain a safe and respectful community, please follow these rules.</p>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="flex items-start space-x-4 p-4 rounded-lg bg-secondary/50">
               <BadgeCheck className="h-8 w-8 mt-1 text-green-500" />
               <div>
-                <h3 className="font-semibold">Sé Respetuoso</h3>
-                <p className="text-muted-foreground">Trata a todos los miembros de la comunidad con respeto. No se tolerará el acoso, el discurso de odio o cualquier tipo de discriminación.</p>
+                <h3 className="font-semibold">Be Respectful</h3>
+                <p className="text-muted-foreground">Treat all community members with respect. Harassment, hate speech, or any form of discrimination will not be tolerated.</p>
               </div>
             </div>
             <div className="flex items-start space-x-4 p-4 rounded-lg bg-secondary/50">
               <Zap className="h-8 w-8 mt-1 text-yellow-500" />
               <div>
-                <h3 className="font-semibold">Transacciones Seguras</h3>
-                <p className="text-muted-foreground">Verifica siempre las direcciones de las wallets y los detalles de la transacción antes de confirmar cualquier pago. Actúa con diligencia y protege tus activos.</p>
+                <h3 className="font-semibold">Secure Transactions</h3>
+                <p className="text-muted-foreground">Always double-check wallet addresses and transaction details before confirming any payment. Practice due diligence and protect your assets.</p>
               </div>
             </div>
             <div className="flex items-start space-x-4 p-4 rounded-lg bg-secondary/50">
               <Ban className="h-8 w-8 mt-1 text-red-500" />
               <div>
-                <h3 className="font-semibold">No Actividades Ilegales</h3>
-                <p className="text-muted-foreground">No utilices la plataforma para el lavado de dinero, la financiación del terrorismo o cualquier otra actividad ilegal. Las cuentas que infrinjan esta regla serán reportadas a las autoridades.</p>
+                <h3 className="font-semibold">No Illegal Activities</h3>
+                <p className="text-muted-foreground">Do not use the platform for money laundering, terrorist financing, or any other illegal activities. Accounts found in violation will be reported to the authorities.</p>
               </div>
             </div>
              <div className="flex items-start space-x-4 p-4 rounded-lg bg-secondary/50">
               <Ban className="h-8 w-8 mt-1 text-red-500" />
               <div>
                 <h3 className="font-semibold">No Spam</h3>
-                <p className="text-muted-foreground">No publiques enlaces no solicitados, promociones o cualquier forma de spam en las áreas de la comunidad.</p>
+                <p className="text-muted-foreground">Do not post unsolicited links, promotions, or any form of spam in community areas.</p>
               </div>
             </div>
           </CardContent>
         </Card>
         <div className="text-center mt-8">
             <Button asChild variant="outline">
-                <Link href="/">Volver al Inicio</Link>
+                <Link href="/">Back to Home</Link>
             </Button>
         </div>
       </div>

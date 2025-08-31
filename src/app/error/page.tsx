@@ -11,9 +11,9 @@ export default function ErrorPage() {
   const router = useRouter();
   const reason = searchParams.get('reason');
 
-  let errorMessage = "Ocurrió un error inesperado.";
+  let errorMessage = "An unexpected error occurred.";
   if (reason === 'payment_failed') {
-    errorMessage = "El pago no pudo ser procesado. Por favor, inténtalo de nuevo.";
+    errorMessage = "The payment could not be processed. Please try again.";
   }
 
   return (
@@ -23,11 +23,11 @@ export default function ErrorPage() {
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
             <AlertTriangle className="h-6 w-6 text-red-600" />
           </div>
-          <CardTitle className="mt-4">Error en el Proceso</CardTitle>
+          <CardTitle className="mt-4">Process Error</CardTitle>
           <CardDescription>{errorMessage}</CardDescription>
         </CardHeader>
         <CardContent>
-          <Button onClick={() => router.push('/')}>Volver al formulario</Button>
+          <Button onClick={() => router.push('/')}>Return to form</Button>
         </CardContent>
       </Card>
     </main>
