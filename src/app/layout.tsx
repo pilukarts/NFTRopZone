@@ -43,7 +43,7 @@ export default function RootLayout({
         <div className="flex-grow">
           {children}
         </div>
-        <footer className="bg-muted/50 text-muted-foreground py-6 mt-auto">
+        <footer className="bg-muted text-muted-foreground py-6 mt-auto">
           <div className="container mx-auto text-center">
              <div className="flex justify-center space-x-4 mb-4">
               {socialLinks.map(link => (
