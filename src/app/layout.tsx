@@ -2,11 +2,27 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import Link from 'next/link';
+import { Facebook, MessageCircle, Twitter } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'NFT Drop Zone',
   description: 'A secure form for NFT delivery.',
 };
+
+const socialLinks = [
+    { name: 'Opensea (pilukartsWorls)', href: 'https://opensea.io/pilukartsWorls' },
+    { name: 'Opensea (pilukartsinlondon)', href: 'https://opensea.io/pilukartsinlondon' },
+    { name: 'Foundation', href: 'https://foundation.app/@pilukarts?username=pilukarts' },
+    { name: 'X', href: '#' },
+    { name: 'TikTok', href: '#' },
+    { name: 'Facebook', href: '#' }
+]
+
+const socialIcons = {
+    X: <Twitter className="h-5 w-5" />,
+    TikTok: <MessageCircle className="h-5 w-5" />,
+    Facebook: <Facebook className="h-5 w-5" />
+}
 
 export default function RootLayout({
   children,
@@ -26,6 +42,14 @@ export default function RootLayout({
         </div>
         <footer className="bg-muted text-muted-foreground py-6 mt-auto">
           <div className="container mx-auto text-center">
+             <div className="flex justify-center space-x-4 mb-4">
+              {socialLinks.map(link => (
+                <Link key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm hover:underline">
+                  {/* @ts-ignore */}
+                  {socialIcons[link.name] ? socialIcons[link.name] : link.name}
+                </Link>
+              ))}
+            </div>
             <div className="flex justify-center space-x-6 mb-4">
               <Link href="/contact" className="text-sm hover:underline">Contact</Link>
               <Link href="/terms" className="text-sm hover:underline">Terms of Service</Link>
