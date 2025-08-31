@@ -15,6 +15,14 @@ const nfts = [
   },
   {
     id: 'nft-2',
+    name: 'Blue Hair & Yellow Light',
+    url: 'https://i.imgur.com/gY3tG21.jpeg',
+    dataAiHint: 'women portrait',
+    description: 'A striking composition featuring two women, one with vibrant blue hair and another against a luminous yellow background.',
+    marketplaceUrl: 'https://opensea.io/item/base/0x1ba41b65b1cbab71c0ef54002ca84af8fd866538/14'
+  },
+  {
+    id: 'nft-3',
     name: 'Cyber-Samurai',
     url: 'https://i.imgur.com/QAv28u4.jpeg',
     dataAiHint: 'samurai futuristic',
@@ -22,7 +30,7 @@ const nfts = [
     marketplaceUrl: 'https://opensea.io/pilukartsWorld'
   },
   {
-    id: 'nft-3',
+    id: 'nft-4',
     name: 'Neon Overdrive',
     url: 'https://i.imgur.com/QKCX7qx.jpeg',
     dataAiHint: 'car night',
@@ -30,7 +38,7 @@ const nfts = [
      marketplaceUrl: 'https://foundation.app/@pilukarts?username=pilukarts'
   },
   {
-    id: 'nft-4',
+    id: 'nft-5',
     name: 'Mystic Feline',
     url: 'https://i.imgur.com/YoiO7mR.jpeg',
     dataAiHint: 'cat magic',
