@@ -428,17 +428,23 @@ export function NftDeliveryForm() {
             />
           </CardContent>
           <CardFooter className="flex flex-col gap-4">
-            {termsAgreed && !isPaid && (
-               <Button
-                type="button"
-                onClick={handlePayment}
-                disabled={isPaying}
-                className="w-full bg-blue-600 text-white hover:bg-blue-700"
-              >
-                {isPaying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                <Wallet className="mr-2 h-4 w-4" />
-                {isPaying ? "Processing Payment..." : "Pay with Wallet"}
-              </Button>
+             {termsAgreed && !isPaid && (
+              <div className="w-full text-center space-y-2">
+                <div className="text-sm text-muted-foreground">
+                  <p>For alternative payment, send to PayPal:</p>
+                  <p className="font-semibold">piluka1977@gmail.com</p>
+                </div>
+                 <Button
+                  type="button"
+                  onClick={handlePayment}
+                  disabled={isPaying}
+                  className="w-full bg-blue-600 text-white hover:bg-blue-700"
+                >
+                  {isPaying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  <Wallet className="mr-2 h-4 w-4" />
+                  {isPaying ? "Processing Payment..." : "Pay with Wallet"}
+                </Button>
+              </div>
             )}
             <Button
               type="submit"
