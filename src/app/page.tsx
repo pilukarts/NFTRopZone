@@ -58,6 +58,24 @@ const featuredNfts = [
     name: 'Glass Cube',
     url: 'https://i.imgur.com/4X89LGY.png',
     dataAiHint: 'glass cube'
+  },
+  {
+    id: '4vlQ1ec',
+    name: 'Digital Bloom',
+    url: 'https://i.imgur.com/4vlQ1ec.png',
+    dataAiHint: 'digital bloom'
+  },
+  {
+    id: 'qHFPFsu',
+    name: 'Glitchy',
+    url: 'https://i.imgur.com/qHFPFsu.jpeg',
+    dataAiHint: 'glitch art'
+  },
+  {
+    id: 'y0vnqwR',
+    name: 'Pixelscape',
+    url: 'https://i.imgur.com/y0vnqwR.jpeg',
+    dataAiHint: 'pixelscape'
   }
 ];
 
