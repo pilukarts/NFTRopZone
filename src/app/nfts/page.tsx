@@ -23,7 +23,7 @@ const nfts = [
   },
   {
     id: 'nft-5',
-    name: 'Mystic Feline',
+    name: 'Mine +Lady',
     url: 'https://i.imgur.com/YoiO7mR.jpeg',
     dataAiHint: 'cat magic',
     description: 'An enigmatic being that guards the secrets of a forgotten world.',
