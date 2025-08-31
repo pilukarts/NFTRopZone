@@ -23,31 +23,6 @@ This project is built with a modern, performant, and scalable tech stack:
 - **Generative AI:** [Google's Genkit](https://firebase.google.com/docs/genkit)
 - **Deployment:** [Firebase App Hosting](https://firebase.google.com/docs/app-hosting)
 
-## Getting Started
-
-To run this project locally, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone <your-repository-url>
-    cd ntfropzone
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Set up environment variables:**
-    Create a `.env` file in the root of the project and add your Firebase and Genkit API keys.
-
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
-
-Open [http://localhost:9003](http://localhost:9003) in your browser to see the result.
-
 ## Contact
 
 - **Artist:** Pilukarts
