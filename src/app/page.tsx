@@ -40,6 +40,24 @@ const featuredNfts = [
     name: 'Smile',
     url: 'https://i.imgur.com/2GeLwJA.jpeg',
     dataAiHint: 'smile illustration'
+  },
+  {
+    id: 'y5ukdql',
+    name: 'Abstract Form',
+    url: 'https://i.imgur.com/y5ukdql.png',
+    dataAiHint: 'abstract form'
+  },
+  {
+    id: 'MkAITqU',
+    name: 'Pixel Portrait',
+    url: 'https://i.imgur.com/MkAITqU.png',
+    dataAiHint: 'pixel portrait'
+  },
+  {
+    id: '4X89LGY',
+    name: 'Glass Cube',
+    url: 'https://i.imgur.com/4X89LGY.png',
+    dataAiHint: 'glass cube'
   }
 ];
 
@@ -63,8 +81,8 @@ export default function Home() {
         className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg" 
         opts={{ loop: true }}
         plugins={[plugin.current]}
-        onMouseEnter={() => plugin.current.stop()}
-        onMouseLeave={() => plugin.current.reset()}
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
       >
         <CarouselContent>
           {featuredNfts.map((nft) => (
