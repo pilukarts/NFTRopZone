@@ -2,6 +2,36 @@
 import Link from 'next/link';
 import { NftDeliveryForm } from '@/components/nft-delivery-form';
 import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Card, CardContent } from '@/components/ui/card';
+import Image from 'next/image';
+
+const featuredNfts = [
+  {
+    id: 'new-art',
+    name: 'Newest Creation',
+    url: 'https://i.imgur.com/Szb2zpE.png',
+    dataAiHint: 'abstract art'
+  },
+  {
+    id: 'nft-3',
+    name: 'SIlver Mini Lady',
+    url: 'https://i.imgur.com/QAv28u4.jpeg',
+    dataAiHint: 'silver lady'
+  },
+  {
+    id: 'nft-4',
+    name: 'Mine +Lady',
+    url: 'https://i.imgur.com/QKCX7qx.jpeg',
+    dataAiHint: 'lady mining'
+  },
+  {
+    id: 'nft-6',
+    name: 'Smile',
+    url: 'https://i.imgur.com/2GeLwJA.jpeg',
+    dataAiHint: 'smile illustration'
+  }
+];
 
 export default function Home() {
   return (
@@ -14,6 +44,31 @@ export default function Home() {
           Your place to securely claim and receive exclusive NFTs from Pilukarts.
         </p>
       </div>
+
+      <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg" opts={{ loop: true }}>
+        <CarouselContent>
+          {featuredNfts.map((nft) => (
+            <CarouselItem key={nft.id}>
+              <div className="p-1">
+                <Card>
+                  <CardContent className="flex aspect-square items-center justify-center p-6 relative">
+                     <Image
+                        src={nft.url}
+                        alt={nft.name}
+                        fill
+                        className="rounded-md object-cover"
+                        data-ai-hint={nft.dataAiHint}
+                      />
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+
 
       <div className="text-center space-y-4">
         <p className="text-muted-foreground">Explore my collections on the official marketplaces:</p>
