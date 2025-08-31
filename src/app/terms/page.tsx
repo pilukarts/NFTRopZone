@@ -28,7 +28,7 @@ export default function TermsPage() {
             <p>By acquiring an NFT through our platform, you gain ownership of the token as defined by its underlying smart contract. Copyright over the original artwork remains with the creator, unless otherwise specified.</p>
             
             <h2 className="font-bold">6. Limitation of Liability</h2>
-            <p>NFT Drop Zone shall not be liable for any financial losses, including but not limited to, loss of cryptocurrencies or NFTs.</p>
+            <p>NFT Drop Zone shall not be liable for any financial losses, including but not to, loss of cryptocurrencies or NFTs.</p>
 
             <h2 className="font-bold">7. Modification of Terms</h2>
             <p>We reserve the right to modify these terms at any time. We will notify you of any significant changes, but it is your responsibility to review the terms periodically.</p>
