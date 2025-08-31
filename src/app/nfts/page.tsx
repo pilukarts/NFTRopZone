@@ -36,6 +36,14 @@ const nfts = [
     dataAiHint: 'smile illustration',
     description: 'A captivating smile that brightens the digital canvas.',
     marketplaceUrl: 'https://opensea.io/pilukartsWorld'
+  },
+  {
+    id: 'nft-7',
+    name: 'pixel art mix',
+    url: 'https://i.imgur.com/reJ56tI.jpeg',
+    dataAiHint: 'pixel art',
+    description: 'A unique mix of pixel art styles.',
+    marketplaceUrl: 'https://opensea.io/item/base/0xf631181cbb46c5571bf02ac82a3418a9ef20457c/1'
   }
 ];
 
