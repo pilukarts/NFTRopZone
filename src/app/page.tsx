@@ -84,6 +84,15 @@ export default function Home() {
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
   
+  const [shuffledNfts, setShuffledNfts] = React.useState<typeof featuredNfts>([]);
+
+  React.useEffect(() => {
+    // Shuffle the array on the client side to prevent hydration mismatch
+    const shuffled = [...featuredNfts].sort(() => Math.random() - 0.5);
+    setShuffledNfts(shuffled);
+  }, []);
+
+
   return (
     <main className="flex min-h-full flex-col items-center justify-center p-4 sm:p-6 lg:p-8 space-y-8">
       <div className="w-full max-w-4xl text-center space-y-2">
@@ -103,7 +112,7 @@ export default function Home() {
         onMouseLeave={plugin.current.reset}
       >
         <CarouselContent>
-          {featuredNfts.map((nft) => (
+          {shuffledNfts.map((nft) => (
             <CarouselItem key={nft.id}>
               <div className="p-1">
                 <Card>
