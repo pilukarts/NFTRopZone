@@ -6,7 +6,7 @@ import { Facebook, Instagram, MessageCircle, Twitter } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'NFT Drop Zone',
-  description: 'A secure form for NFT delivery.',
+  description: 'Explore the exclusive NFT gallery of Pilukarts. A secure platform to discover and claim unique digital art.',
 };
 
 const socialLinks = [
