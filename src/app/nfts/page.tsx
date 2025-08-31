@@ -44,6 +44,14 @@ const nfts = [
     dataAiHint: 'pixel art',
     description: 'A unique mix of pixel art styles.',
     marketplaceUrl: 'https://opensea.io/item/base/0xf631181cbb46c5571bf02ac82a3418a9ef20457c/1'
+  },
+  {
+    id: 'nft-8',
+    name: 'from above....',
+    url: 'https://i.imgur.com/37oXf3K.jpeg',
+    dataAiHint: 'abstract aerial',
+    description: 'A colorful perspective, as if seen from the heavens.',
+    marketplaceUrl: 'https://opensea.io/item/base/0xf631181cbb46c5571bf02ac82a3418a9ef20457c/5'
   }
 ];
 
