@@ -7,11 +7,11 @@ import { ProtectedImage } from '@/components/protected-image';
 const nfts = [
   {
     id: 'nft-1',
-    name: 'Galactic Explorer',
-    url: 'https://i.imgur.com/uGSNZ9e.jpeg',
-    dataAiHint: 'astronaut space',
-    description: 'A brave explorer floating in the vastness of the cosmos.',
-    marketplaceUrl: 'https://opensea.io/pilukartsWorld'
+    name: 'Blonde Lady Blue Background',
+    url: 'https://i.imgur.com/pA1D7h4.jpeg',
+    dataAiHint: 'woman portrait',
+    description: 'A captivating portrait of a blonde woman against a striking blue background, blending classic and modern aesthetics.',
+    marketplaceUrl: 'https://opensea.io/item/base/0x1ba41b65b1cbab71c0ef54002ca84af8fd866538/13'
   },
   {
     id: 'nft-2',
