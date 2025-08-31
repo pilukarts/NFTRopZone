@@ -76,6 +76,36 @@ const featuredNfts = [
     name: 'Pixelscape',
     url: 'https://i.imgur.com/y0vnqwR.jpeg',
     dataAiHint: 'pixelscape'
+  },
+  {
+    id: 'PsOW8NL',
+    name: 'Abstract Shape',
+    url: 'https://i.imgur.com/PsOW8NL.jpeg',
+    dataAiHint: 'abstract shape'
+  },
+  {
+    id: 'aKn8mzv',
+    name: 'Colorful Abstract',
+    url: 'https://i.imgur.com/aKn8mzv.jpeg',
+    dataAiHint: 'colorful abstract'
+  },
+  {
+    id: 'OLNFzjf',
+    name: 'Digital Landscape',
+    url: 'https://i.imgur.com/OLNFzjf.jpeg',
+    dataAiHint: 'digital landscape'
+  },
+  {
+    id: 'rnLCTd4',
+    name: 'Geometric Art',
+    url: 'https://i.imgur.com/rnLCTd4.jpeg',
+    dataAiHint: 'geometric art'
+  },
+  {
+    id: 'h4caRMZ',
+    name: 'Abstract Creature',
+    url: 'https://i.imgur.com/h4caRMZ.jpeg',
+    dataAiHint: 'abstract creature'
   }
 ];
 
