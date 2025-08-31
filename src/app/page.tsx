@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 const nfts = [
-  {
+    {
     id: 'nft-1',
     name: 'Galactic Explorer',
     url: 'https://i.imgur.com/uGSNZ9e.jpeg',
