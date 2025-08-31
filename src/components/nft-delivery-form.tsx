@@ -5,12 +5,11 @@ import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   CheckCircle2,
-  Image as ImageIcon,
+  Link as LinkIcon,
   Loader2,
   Mail,
   User,
@@ -62,33 +61,6 @@ import { verifyFormData } from "@/ai/flows/verify-form-data";
 import { translateText } from "@/ai/flows/translate-text";
 import { submitForm } from "@/lib/actions";
 
-const nfts = [
-  {
-    id: "nft-1",
-    name: "Galactic Explorer",
-    url: "https://i.imgur.com/uGSNZ9e.jpeg",
-    dataAiHint: "astronaut space",
-  },
-  {
-    id: "nft-2",
-    name: "Cyber-Samurai",
-    url: "https://i.imgur.com/QAv28u4.jpeg",
-    dataAiHint: "samurai futuristic",
-  },
-  {
-    id: "nft-3",
-    name: "Neon Overdrive",
-    url: "https://i.imgur.com/QKCX7qx.jpeg",
-    dataAiHint: "car night",
-  },
-  {
-    id: 'nft-4',
-    name: 'Mystic Feline',
-    url: 'https://i.imgur.com/YoiO7mR.jpeg',
-    dataAiHint: 'cat magic',
-  },
-];
-
 const deliveryContract = `
 This NFT Delivery Contract ("Contract") is made and entered into as of the submission date by and between the purchaser ("Buyer") and the seller ("Seller").
 
@@ -114,7 +86,7 @@ const languages = [
 const formSchema = z.object({
   buyerName: z.string().min(2, { message: "Name must be at least 2 characters." }),
   buyerEmail: z.string().email({ message: "Please enter a valid email address." }),
-  selectedNft: z.string({ required_error: "Please select an NFT to purchase." }),
+  nftLink: z.string().url({ message: "Please enter a valid NFT URL." }),
   password: z.string().min(8, { message: "Password must be at least 8 characters." }),
   termsAgreement: z.literal(true, {
     errorMap: () => ({ message: "You must agree to the terms and conditions." }),
@@ -137,6 +109,7 @@ export function NftDeliveryForm() {
     defaultValues: {
       buyerName: "",
       buyerEmail: "",
+      nftLink: "",
       password: "",
       termsAgreement: false,
       language: "en",
@@ -196,14 +169,7 @@ export function NftDeliveryForm() {
     }
 
     startTransition(async () => {
-      const selectedNftObject = nfts.find((nft) => nft.id === values.selectedNft);
-      
-      const aiInput = {
-        ...values,
-        selectedNft: JSON.stringify(selectedNftObject)
-      };
-      
-      const aiVerificationResult = await verifyFormData(aiInput);
+      const aiVerificationResult = await verifyFormData(values);
 
       if (!aiVerificationResult.isComplete) {
         toast({
@@ -316,39 +282,19 @@ export function NftDeliveryForm() {
             />
             <FormField
               control={form.control}
-              name="selectedNft"
+              name="nftLink"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Select NFT</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormLabel>NFT Link</FormLabel>
+                  <div className="relative">
+                    <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <FormControl>
-                      <div className="relative">
-                        <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                        <SelectTrigger className="pl-10">
-                          <SelectValue placeholder="Choose your purchased NFT" />
-                        </SelectTrigger>
-                      </div>
+                      <Input placeholder="https://opensea.io/assets/..." {...field} className="pl-10" />
                     </FormControl>
-                    <SelectContent>
-                      {nfts.map((nft) => (
-                        <SelectItem key={nft.id} value={nft.id}>
-                          <div className="flex items-center gap-3">
-                            <Image
-                              src={nft.url}
-                              alt={nft.name}
-                              width={40}
-                              height={40}
-                              className="rounded-md object-cover"
-                              data-ai-hint={nft.dataAiHint}
-                            />
-                            <div>
-                              <p className="font-semibold">{nft.name}</p>
-                            </div>
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  </div>
+                  <FormDescription>
+                    Paste the link to the NFT you want to purchase.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

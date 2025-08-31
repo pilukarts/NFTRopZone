@@ -9,7 +9,7 @@ import { z } from "zod";
 const formSchema = z.object({
   buyerName: z.string().min(2),
   buyerEmail: z.string().email(),
-  selectedNft: z.string().min(1),
+  nftLink: z.string().url(),
   password: z.string().min(8),
   termsAgreement: z.literal(true),
 });
@@ -45,5 +45,3 @@ export async function submitForm(values: z.infer<typeof formSchema>) {
     };
   }
 }
-
-    

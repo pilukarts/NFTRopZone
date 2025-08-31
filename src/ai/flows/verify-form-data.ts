@@ -15,9 +15,7 @@ import {z} from 'genkit';
 const VerifyFormDataInputSchema = z.object({
   buyerName: z.string().describe('The name of the buyer.'),
   buyerEmail: z.string().email().describe('The email of the buyer.'),
-  selectedNft: z
-    .string()
-    .describe('The selected NFT (name, url, and price).'),
+  nftLink: z.string().url().describe('The URL of the selected NFT.'),
   password: z.string().describe('The password for NFT download.'),
   termsAgreement: z
     .boolean()
@@ -47,7 +45,7 @@ Determine if the following form data is complete.
 
 Buyer Name: {{{buyerName}}}
 Buyer Email: {{{buyerEmail}}}
-Selected NFT: {{{selectedNft}}}
+NFT Link: {{{nftLink}}}
 Password: {{{password}}}
 Terms Agreement: {{{termsAgreement}}}
 
@@ -67,5 +65,3 @@ const verifyFormDataFlow = ai.defineFlow(
     return output!;
   }
 );
-
-    
